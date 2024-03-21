@@ -46,7 +46,11 @@ def predict(width, height, confidences, boxes, prob_threshold, iou_threshold=0.3
     return picked_box_probs[:, :4].astype(np.int32), np.array(picked_labels), picked_box_probs[:, 4]
 
 
-cap = cv2.VideoCapture(1)  # 0 is the index of the webcam. Change if you have multiple webcams.
+rtsp_url = "rtsp://admin:sanslab1@192.168.1.64:554/Streaming/Channels/101"
+cap = cv2.VideoCapture(rtsp_url)
+
+# cap = cv2.VideoCapture(1)  # 0 is the index of the webcam. Change if you have multiple webcams.
+
 
 while True:
     ret, orig_image = cap.read()
